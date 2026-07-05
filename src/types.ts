@@ -21,6 +21,13 @@ export interface AuthSpec {
   scopes: string[];
 }
 
+/** Step-by-step install/connect instructions — rendered by apps automatically,
+ *  so every connector (incl. community ones) carries its own onboarding. */
+export interface SetupGuide {
+  steps: Array<{ title: string; body?: string; image?: string }>;
+  docsUrl?: string;
+}
+
 export type ReadCap = "site" | "products" | "pages" | "structured_data" | "meta" | "sitemap" | "feeds";
 
 export interface ConnectorManifest {
@@ -37,6 +44,7 @@ export interface ConnectorManifest {
     write: string[];
   };
   auth: AuthSpec;
+  setup?: SetupGuide;
 }
 
 export interface DetectResult {

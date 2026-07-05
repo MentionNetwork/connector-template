@@ -16,6 +16,12 @@ export const connector: SiteConnector = {
       write: [], // e.g. ["meta.update", "content.publish"] — dryRun + rollback become REQUIRED
     },
     auth: { kind: "api_key", scopes: ["read pages and metadata"] },
+    setup: {
+      steps: [
+        { title: "Find your platform's API token page", body: "e.g. Joomla: Users -> Manage -> your user -> 'Joomla API Token' tab -> Generate" },
+        { title: "Paste the token into the app when connecting" },
+      ],
+    },
   },
 
   async detect(url: string): Promise<DetectResult> {
